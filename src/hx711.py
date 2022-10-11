@@ -61,12 +61,14 @@ def scale(value,rawmin, rawmax, rangemin, rangemax):
 
 def weight():
     ''' reads, scales and returns a weight sample from the scale '''
-    
+
     readvalue  = read()
 
-    value = scale(readvalue, taremin, (12780 + taremin), 0, 1000) // 1000 / 10
+    if readvalue == 0:
+        return None
 
-    print(value, readvalue, taremin, (12780 + taremin), 0, 1000)
+    value = scale(readvalue, taremin, (12780 + taremin), 0, 1000) // 1000 / 10
+    #print(value, readvalue, taremin, (12780 + taremin), 0, 1000)
     
     return value
 
